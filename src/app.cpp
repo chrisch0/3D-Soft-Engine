@@ -34,7 +34,7 @@ bool App::Initialize()
 	return true;
 }
 
-void App::Run()
+void App::Run(std::function<void(Image*)> scene)
 {
 	MSG msg = { 0 };
 	
@@ -52,16 +52,8 @@ void App::Run()
 			m_timer.Tick();
 			if (!m_appPaused)
 			{
-				for (int u = 0; u < m_surface->GetWidth(); ++u)
-				{
-					for (int v = 0; v < m_surface->GetHeight(); ++v)
-					{
-						unsigned char r = u * 255 / m_surface->GetWidth();
-						unsigned char g = v * 255 / m_surface->GetHeight();
-						m_surface->SetColorBGR(u, v, Color(r, g, 0, 0));
-					}
-				}
-
+				
+				scene(m_surface);
 				HDC window_dc = GetDC(m_hMainWnd);
 				BitBlt(window_dc, 0, 0, m_clientWidth, m_clientHeight, m_memoryDC, 0, 0, SRCCOPY);
 				ReleaseDC(m_hMainWnd, window_dc);

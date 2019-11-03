@@ -1,54 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="core">
+      <UniqueIdentifier>{2430b451-328d-46dc-aaff-f3977d90abf9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="math">
+      <UniqueIdentifier>{32cea653-8439-4f8e-aefb-c8ec3852d614}</UniqueIdentifier>
     </Filter>
-    <Filter Include="资源文件">
+    <Filter Include="utils">
+      <UniqueIdentifier>{cc2f88c1-2611-4b8e-a045-353bc48487ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="scene">
+      <UniqueIdentifier>{0b006ad8-16e3-407b-836d-dab1a2371f78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\app.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\core\image.hpp">
-      <Filter>头文件</Filter>
+      <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="..\src\math\vec.hpp">
-      <Filter>头文件</Filter>
+      <Filter>math</Filter>
     </ClInclude>
     <ClInclude Include="..\src\utils\timer.hpp">
-      <Filter>头文件</Filter>
+      <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\src\utils\util.hpp">
-      <Filter>头文件</Filter>
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\app.hpp" />
+    <ClInclude Include="..\src\scene\test_scene.hpp">
+      <Filter>scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\scene\light2d.hpp">
+      <Filter>scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\app.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\core\image.cpp">
-      <Filter>源文件</Filter>
+      <Filter>core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\math\vec.cpp">
-      <Filter>源文件</Filter>
+      <Filter>math</Filter>
     </ClCompile>
     <ClCompile Include="..\src\utils\timer.cpp">
-      <Filter>源文件</Filter>
+      <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="..\src\utils\util.cpp">
-      <Filter>源文件</Filter>
+      <Filter>utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\app.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
 </Project>

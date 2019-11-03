@@ -121,6 +121,8 @@
     <ClInclude Include="..\src\app.hpp" />
     <ClInclude Include="..\src\core\image.hpp" />
     <ClInclude Include="..\src\math\vec.hpp" />
+    <ClInclude Include="..\src\scene\light2d.hpp" />
+    <ClInclude Include="..\src\scene\test_scene.hpp" />
     <ClInclude Include="..\src\utils\timer.hpp" />
     <ClInclude Include="..\src\utils\util.hpp" />
   </ItemGroup>

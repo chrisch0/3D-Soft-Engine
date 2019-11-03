@@ -13,8 +13,8 @@ public:
 	void LoadTGA(std::string& filename);
 	void SaveasTGA(std::string& filename);
 
-	void SetColorRGB(int row, int col, Color color);
-	void SetColorBGR(int row, int col, Color color);
+	void SetColorRGB(int u, int v, Color color);
+	void SetColorBGR(int u, int v, Color color);
 	void SetBuffer(unsigned char* buffer);
 
 	unsigned char* GetBuffer() const { return m_buffer; }

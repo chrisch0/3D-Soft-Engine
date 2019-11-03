@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <windows.h>
 #include <string>
+#include <functional>
 #include "utils/timer.hpp"
 #include "core/image.hpp"
 
@@ -14,7 +15,7 @@ public:
 	App& operator=(const App&) = delete;
 	static App* GetApp();
 	bool Initialize();
-	void Run();
+	void Run(std::function<void(Image*)>);
 	LRESULT MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 private:
 	Timer m_timer;
