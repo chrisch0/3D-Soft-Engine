@@ -76,7 +76,7 @@ void Image::SaveasTGA(std::string& filename)
 	file.close();
 }
 
-void Image::SetColorRGB(int u, int v, Color color)
+void Image::SetColorRGB(int u, int v, Color_255 color)
 {
 	assert(u < m_width && v < m_height);
 	int flipped_row = m_height - v - 1;
@@ -86,7 +86,7 @@ void Image::SetColorRGB(int u, int v, Color color)
 	m_buffer[index + 2] = color.z;
 }
 
-void Image::SetColorBGR(int u, int v, Color color)
+void Image::SetColorBGR(int u, int v, Color_255 color)
 {
 	assert(u < m_width && v < m_height);
 	int flipped_row = m_height - v - 1;

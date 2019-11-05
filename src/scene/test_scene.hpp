@@ -10,7 +10,7 @@ void UVTest(Image* surface)
 		{
 			unsigned char r = u * 255 / surface->GetWidth();
 			unsigned char g = v * 255 / surface->GetHeight();
-			surface->SetColorBGR(u, v, Color(r, g, 0, 0));
+			surface->SetColorBGR(u, v, Color_255(r, g, 0, 0));
 		}
 	}
 }

@@ -15,6 +15,13 @@ App::App()
 	m_app = this;
 }
 
+App::App(int width, int height) :
+	m_clientWidth(width), m_clientHeight(height)
+{
+	assert(m_app == nullptr);
+	m_app = this;
+}
+
 App::~App()
 {
 
@@ -39,6 +46,39 @@ void App::Run(std::function<void(Image*)> scene)
 	MSG msg = { 0 };
 	
 	m_timer.Reset();
+	
+	while (msg.message != WM_QUIT)
+	{
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		else
+		{
+			m_timer.Tick();
+			if (!m_appPaused)
+			{
+				scene(m_surface);
+				HDC window_dc = GetDC(m_hMainWnd);
+				BitBlt(window_dc, 0, 0, m_clientWidth, m_clientHeight, m_memoryDC, 0, 0, SRCCOPY);
+				ReleaseDC(m_hMainWnd, window_dc);
+			}
+			else
+			{
+				Sleep(100);
+			}
+		}
+	}
+}
+
+void App::SingleFrame(std::function<void(Image*)> scene)
+{
+	MSG msg = { 0 };
+
+	m_timer.Reset();
+
+	scene(m_surface);
 
 	while (msg.message != WM_QUIT)
 	{
@@ -52,8 +92,6 @@ void App::Run(std::function<void(Image*)> scene)
 			m_timer.Tick();
 			if (!m_appPaused)
 			{
-				
-				scene(m_surface);
 				HDC window_dc = GetDC(m_hMainWnd);
 				BitBlt(window_dc, 0, 0, m_clientWidth, m_clientHeight, m_memoryDC, 0, 0, SRCCOPY);
 				ReleaseDC(m_hMainWnd, window_dc);

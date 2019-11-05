@@ -25,29 +25,37 @@ double Trace(Vec2d pos, Vec2d dir)
 	return 0.0f;
 }
 
-double Sample(int u, int v)
+double Sample(double u, double v)
 {
 	double sum = 0.0;
-	int sample_times = 64;
-	std::random_device r;
-	r_engine.seed(r());
+	double sample_times = 16.0;
+	//std::random_device r;
+	//r_engine.seed(r());
 	for (int i = 0; i < sample_times; ++i)
 	{
-		double rand = u_double(r_engine);
-		sum += Trace(Vec2d((double)u, (double)v), Vec2d(std::cos(rand), std::sin(rand)));
+		//double rand = u_double(r_engine);
+		double rand = tau * std::rand() / RAND_MAX;
+		sum += Trace(Vec2d(u, v), Vec2d(std::cos(rand), std::sin(rand)));
 	}
-	return sum;
+	return sum / sample_times;
 }
 
 void FirstLight(Image* surface)
 {
-	for (int u = 0; u < surface->GetWidth(); ++u)
+	for (int w = 0; w < surface->GetWidth(); ++w)
 	{
-		for (int v = 0; v < surface->GetHeight(); ++v)
+		for (int h = 0; h < surface->GetHeight(); ++h)
 		{
+			double u = (double)w / surface->GetWidth();
+			double v = (double)h / surface->GetHeight();
 			auto sam = Sample(u, v);
-			Color baseColor(1.0, 0.7, 0.8, 1.0);
-			surface->SetColorBGR(u, v, baseColor * sam);
+			Color_255 baseColor;
+			baseColor.x = baseColor.y = baseColor.z = sam * 255;
+			baseColor.w = 255;
+			surface->SetColorBGR(w, h, baseColor);
+			//unsigned char r = u * 255 / surface->GetWidth();
+			//unsigned char g = v * 255 / surface->GetHeight();
+			//surface->SetColorBGR(u, v, Color(r, g, 0, 0));
 		}
 	}
 }

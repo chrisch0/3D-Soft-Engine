@@ -4,8 +4,9 @@
 
 int main(int argc, char* argv[])
 {
-	App app;
+	App app(512, 512);
 	app.Initialize();
-	app.Run(FirstLight);
+	app.SingleFrame(FirstLight);
+	system("pause");
 	return 0;
 }

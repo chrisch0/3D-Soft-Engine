@@ -7,6 +7,7 @@ class Vec2
 {
 public:
 	T x, y;
+	Vec2() : x(0), y(0) {}
 	Vec2(T x, T y) : x(x), y(y) {}
 	~Vec2() {}
 
@@ -55,6 +56,7 @@ class Vec4
 {
 public:
 	T x, y, z, w;
+	Vec4() : x(0), y(0), z(0), w(0) {}
 	Vec4(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {};
 	~Vec4() {};
 
@@ -96,7 +98,7 @@ private:
 	
 };
 
-using Color = Vec4<unsigned char>;
+using Color_255 = Vec4<unsigned char>;
 
 template <typename T>
 inline Vec2<T> operator*(const T& s, const Vec2<T>& rhs)

@@ -10,12 +10,14 @@ class App
 {
 public:
 	App();
+	App(int width, int height);
 	~App();
 	App(const App&) = delete;
 	App& operator=(const App&) = delete;
 	static App* GetApp();
 	bool Initialize();
 	void Run(std::function<void(Image*)>);
+	void SingleFrame(std::function<void(Image*)>);
 	LRESULT MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 private:
 	Timer m_timer;
