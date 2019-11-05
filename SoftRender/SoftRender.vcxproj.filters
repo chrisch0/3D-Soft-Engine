@@ -38,6 +38,9 @@
     <ClInclude Include="..\src\scene\light2d.hpp">
       <Filter>scene</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\scene\sdf.hpp">
+      <Filter>scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\core\image.cpp">
