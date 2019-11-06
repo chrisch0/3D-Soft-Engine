@@ -45,6 +45,22 @@ public:
 		return Vec2<T>(x * s, y * s);
 	}
 
+	Vec2<T>& operator*=(const T& s)
+	{
+		x *= s; y *= s;
+		return *this;
+	}
+
+	double operator*(const Vec2<T>& rhs) const
+	{
+		return x * rhs.x + y * rhs.y;
+	}
+
+	Vec2<T> operator/(const T& s) const
+	{
+		return Vec2<T>(x / s, y / s);
+	}
+
 	double LengthSquared() const { return x * x + y * y; }
 	double Length() const { return std::sqrt(x * x + y * y); }
 };
