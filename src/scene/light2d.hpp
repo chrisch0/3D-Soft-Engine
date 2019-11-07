@@ -46,8 +46,12 @@ Vec2d Scene(const Vec2d& pos)
 	//return ObjectSubtract(c1, c2);
 	return ObjectSubtract(c2, c1);*/
 
-	Vec2d capsule1 = { CapsuleSDF(pos, Vec2d(0.4, 0.4), Vec2d(0.6, 0.6), 0.1), 1.0 };
-	return capsule1;
+	//Vec2d capsule1 = { CapsuleSDF(pos, Vec2d(0.4, 0.4), Vec2d(0.6, 0.6), 0.1), 1.0 };
+	//return capsule1;
+
+	Vec2d box1 = { BoxSDF(pos, Vec2d(0.5, 0.5), tau / 16.0, Vec2d(0.3, 0.1)) - 0.1, 1.0 };
+	Vec2d box2 = { BoxSDF(pos, Vec2d(0.5, 0.5), tau / 16.0, Vec2d(0.3, 0.1)), 1.0 };
+	return ObjectIntersect(box1, box2);
 }
 
 double Trace(const Vec2d& pos, const Vec2d& dir)
@@ -80,6 +84,7 @@ double Sample(double u, double v)
 
 		// Jittered sampling
 		double rand = tau * (i + u_double(r_engine)) / sample_times;
+		//double rand = tau * (i + (double)std::rand() / RAND_MAX) / sample_times;
 		sum += Trace(Vec2d(u, v), Vec2d(std::cos(rand), std::sin(rand)));
 	}
 	return sum / sample_times;
